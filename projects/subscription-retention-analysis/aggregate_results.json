@@ -1,0 +1,103 @@
+{
+  "funnel": [
+    {
+      "index": 0,
+      "stage": "11월 할인 유입",
+      "users": 797,
+      "denominator": 797,
+      "pct": 100.0
+    },
+    {
+      "index": 1,
+      "stage": "12월 갱신 기록",
+      "users": 368,
+      "denominator": 797,
+      "pct": 46.1731493099
+    },
+    {
+      "index": 2,
+      "stage": "연간권 기록",
+      "users": 136,
+      "denominator": 368,
+      "pct": 36.9565217391
+    }
+  ],
+  "groups": [
+    {
+      "group": "12월 갱신 기록 없음",
+      "users": 429,
+      "mean_active_days": 6.2983682984,
+      "mean_days_since_last_activity": 12.4662004662,
+      "mean_start_content_unique_30": 3.7505827506,
+      "mean_difficulty_count_30": 1.5524475524,
+      "mean_completion_rate_30_pct": 32.1303179633,
+      "completion_rate_defined_users": 368,
+      "users_with_start_content_30": 368
+    },
+    {
+      "group": "월간권 기록만",
+      "users": 232,
+      "mean_active_days": 6.4827586207,
+      "mean_days_since_last_activity": 10.0689655172,
+      "mean_start_content_unique_30": 3.4224137931,
+      "mean_difficulty_count_30": 1.5129310345,
+      "mean_completion_rate_30_pct": 34.830021643,
+      "completion_rate_defined_users": 192,
+      "users_with_start_content_30": 192
+    },
+    {
+      "group": "연간권 기록 있음",
+      "users": 136,
+      "mean_active_days": 11.25,
+      "mean_days_since_last_activity": 5.8897058824,
+      "mean_start_content_unique_30": 5.1544117647,
+      "mean_difficulty_count_30": 1.8970588235,
+      "mean_completion_rate_30_pct": 46.5398302398,
+      "completion_rate_defined_users": 126,
+      "users_with_start_content_30": 126
+    }
+  ],
+  "master_rates": [
+    {
+      "has_discount": 0,
+      "users": 3547,
+      "renewed_in_source_master": 2240,
+      "source_master_renewal_pct": 63.1519594023
+    },
+    {
+      "has_discount": 1,
+      "users": 1299,
+      "renewed_in_source_master": 690,
+      "source_master_renewal_pct": 53.1177829099
+    }
+  ],
+  "cohort_reconciliation": [
+    {
+      "index": 0,
+      "cohort": "11월 전체 15,920원 플랜",
+      "users": 886,
+      "dec_renew_users": 429,
+      "dec_annual_users": 144
+    },
+    {
+      "index": 1,
+      "cohort": "11월 할인 고객",
+      "users": 797,
+      "dec_renew_users": 368,
+      "dec_annual_users": 136
+    }
+  ],
+  "audit": {
+    "cohort_unique_users": 797,
+    "customers_with_both_dec_plans": 13,
+    "source_master_renewed_in_discount_cohort": 408,
+    "source_master_flag_vs_dec_target_disagreements": 42,
+    "renewed_before_30d_observation_end": 91,
+    "changed_difficulty_users_after_window_filter": 155,
+    "master_first_activity_before_payment": 0,
+    "master_last_activity_after_reference": 0,
+    "master_active_days_max": 31,
+    "completion_undefined_users": 111
+  },
+  "annual_share_of_all_discount_pct": 17.063989962358846
+}
