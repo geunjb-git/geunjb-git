@@ -1,0 +1,199 @@
+{
+  "monthly": [
+    {
+      "month": "2022-11",
+      "applicants": 203,
+      "visitors": 141,
+      "all_payers": 100,
+      "visitor_payers": 71,
+      "applicant_payment_pct": 49.2610837438,
+      "visitor_payment_pct": 50.3546099291,
+      "first_visit_pct": 69.4581280788
+    },
+    {
+      "month": "2022-12",
+      "applicants": 414,
+      "visitors": 269,
+      "all_payers": 163,
+      "visitor_payers": 110,
+      "applicant_payment_pct": 39.3719806763,
+      "visitor_payment_pct": 40.8921933086,
+      "first_visit_pct": 64.9758454106
+    },
+    {
+      "month": "2023-11",
+      "applicants": 246,
+      "visitors": 200,
+      "all_payers": 57,
+      "visitor_payers": 43,
+      "applicant_payment_pct": 23.1707317073,
+      "visitor_payment_pct": 21.5,
+      "first_visit_pct": 81.3008130081
+    },
+    {
+      "month": "2023-12",
+      "applicants": 281,
+      "visitors": 263,
+      "all_payers": 68,
+      "visitor_payers": 61,
+      "applicant_payment_pct": 24.1992882562,
+      "visitor_payment_pct": 23.1939163498,
+      "first_visit_pct": 93.5943060498
+    }
+  ],
+  "yearly": [
+    {
+      "year": "2022",
+      "applicants": 617,
+      "visitors": 410,
+      "all_payers": 263,
+      "visitor_payers": 181,
+      "second_visitors": 177,
+      "third_visitors": 69,
+      "applicant_payment_pct": 42.6256077796,
+      "visitor_payment_pct": 44.1463414634,
+      "first_visit_pct": 66.4505672609,
+      "second_given_first_pct": 43.1707317073,
+      "third_given_second_pct": 38.9830508475
+    },
+    {
+      "year": "2023",
+      "applicants": 527,
+      "visitors": 463,
+      "all_payers": 125,
+      "visitor_payers": 104,
+      "second_visitors": 256,
+      "third_visitors": 119,
+      "applicant_payment_pct": 23.7191650854,
+      "visitor_payment_pct": 22.4622030238,
+      "first_visit_pct": 87.8557874763,
+      "second_given_first_pct": 55.2915766739,
+      "third_given_second_pct": 46.484375
+    }
+  ],
+  "strata": [
+    {
+      "year": "2022",
+      "visit_days_group": 1,
+      "visitors": 233,
+      "payers": 86,
+      "payment_pct": 36.9098712446
+    },
+    {
+      "year": "2022",
+      "visit_days_group": 2,
+      "visitors": 108,
+      "payers": 48,
+      "payment_pct": 44.4444444444
+    },
+    {
+      "year": "2022",
+      "visit_days_group": 3,
+      "visitors": 69,
+      "payers": 47,
+      "payment_pct": 68.115942029
+    },
+    {
+      "year": "2023",
+      "visit_days_group": 1,
+      "visitors": 207,
+      "payers": 30,
+      "payment_pct": 14.4927536232
+    },
+    {
+      "year": "2023",
+      "visit_days_group": 2,
+      "visitors": 137,
+      "payers": 35,
+      "payment_pct": 25.5474452555
+    },
+    {
+      "year": "2023",
+      "visit_days_group": 3,
+      "visitors": 119,
+      "payers": 39,
+      "payment_pct": 32.7731092437
+    }
+  ],
+  "behavior": [
+    {
+      "year": "2022",
+      "visitors": 410,
+      "mean_visit_days": 1.6097560976,
+      "mean_total_stay_hour": 6.8538468835,
+      "mean_used_site_count": 1.0512195122,
+      "mean_days_to_first_visit": 1.2097560976
+    },
+    {
+      "year": "2023",
+      "visitors": 463,
+      "mean_visit_days": 1.8401727862,
+      "mean_total_stay_hour": 8.8901361891,
+      "mean_used_site_count": 1.0777537797,
+      "mean_days_to_first_visit": 0.3714902808
+    }
+  ],
+  "quality": {
+    "cohort_size": 1144,
+    "missing_payment_before_fill": 0,
+    "payers_without_visit_record": 103,
+    "first_visit_before_latest_application": 0,
+    "first_visit_over_3_days": 0,
+    "users_more_than_3_visit_days": 18
+  },
+  "basic_logit": [
+    {
+      "feature": "const",
+      "coefficient": -1.8447177362,
+      "odds_ratio": 0.158069932,
+      "p_value": 1.792e-07,
+      "ci_low": 0.0790724435,
+      "ci_high": 0.315990025
+    },
+    {
+      "feature": "visit_days",
+      "coefficient": 0.8411543731,
+      "odds_ratio": 2.3190424725,
+      "p_value": 1e-10,
+      "ci_low": 1.7932564994,
+      "ci_high": 2.9989898215
+    },
+    {
+      "feature": "total_stay_hour",
+      "coefficient": -0.0423985996,
+      "odds_ratio": 0.9584876516,
+      "p_value": 0.0055468185,
+      "ci_low": 0.9301946978,
+      "ci_high": 0.9876411686
+    },
+    {
+      "feature": "used_site_count",
+      "coefficient": 0.2207119381,
+      "odds_ratio": 1.246964176,
+      "p_value": 0.3848695899,
+      "ci_low": 0.7579705694,
+      "ci_high": 2.0514248428
+    },
+    {
+      "feature": "days_to_first_visit",
+      "coefficient": 0.2524603952,
+      "odds_ratio": 1.2871885163,
+      "p_value": 0.0182579,
+      "ci_low": 1.0437546789,
+      "ci_high": 1.5873981789
+    },
+    {
+      "feature": "year_2023",
+      "coefficient": -0.9839990917,
+      "odds_ratio": 0.3738131925,
+      "p_value": 2.9e-08,
+      "ci_low": 0.2640367179,
+      "ci_high": 0.5292305705
+    }
+  ],
+  "basic_logit_info": {
+    "nobs": 873,
+    "converged": true,
+    "excluded_missing_or_infinite": 0
+  }
+}
