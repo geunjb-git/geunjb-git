@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f6f7f2">
+  <meta name="description" content="정봉근의 데이터 분석 포트폴리오. 구독서비스 재구독, 공유오피스 결제율, 서울 상권 분석 프로젝트를 소개합니다.">
+  <meta property="og:title" content="정봉근 · Data Analyst Portfolio">
+  <meta property="og:description" content="고객의 선택을 데이터로 이해합니다. 고객 행동과 결제 데이터를 살펴본 세 가지 분석.">
+  <meta property="og:type" content="website">
+  <title>정봉근 · Data Analyst Portfolio</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 80'%3E%3Crect width='80' height='80' rx='20' fill='%231f5146'/%3E%3Ctext x='40' y='54' font-family='Arial' font-size='42' text-anchor='middle' fill='white'%3EB%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">본문으로 건너뛰기</a>
+<header class="header">
+  <a href="#top" class="brand" aria-label="정봉근 포트폴리오 처음으로"><span class="monogram">BG.</span><span>정봉근<span class="brand-sub">DATA ANALYST PORTFOLIO</span></span></a>
+  <nav aria-label="주요 메뉴"><a href="#work">프로젝트</a><a href="#about">소개</a><a class="github-nav" href="https://github.com/geunjb-git" target="_blank" rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span></a></nav>
+</header>
+<main id="main">
+  <section class="hero wrap" id="top" aria-labelledby="hero-title">
+    <div class="hero-copy">
+      <p class="eyebrow"><span class="dot"></span> CUSTOMER EXPERIENCE → DATA ANALYSIS</p>
+      <h1 id="hero-title">고객의 선택을<br><span>데이터로 이해합니다.</span></h1>
+      <p class="hero-intro">고객상담 현장에서 쌓은 이해를 바탕으로,<br class="desktop-br"> 고객 행동과 결제 데이터를 분석하는 <strong>정봉근</strong>입니다.</p>
+      <a class="button primary" href="#work">프로젝트 살펴보기 <span aria-hidden="true">↓</span></a>
+      <div class="tools" aria-label="분석 도구"><span>SQL</span><span>Python</span><span>BigQuery</span><span>dbt</span><span>Looker Studio</span></div>
+    </div>
+    <div class="hero-evidence" aria-label="대표 분석 결과: 할인 유입 갱신자 368명 중 연간권 기록 136명, 37.0%">
+      <div class="evidence-top"><span>SELECTED INSIGHT / 01</span><span class="tiny-dot" aria-hidden="true"></span></div>
+      <p class="evidence-question">할인으로 들어온 고객은<br>어떤 선택을 했을까?</p>
+      <div class="big-rate">37.0<span>%</span></div>
+      <p class="rate-description">12월 갱신자 중 연간권 기록 비중</p>
+      <div class="mini-funnel"><div><span>11월 할인 유입</span><div class="bar" style="--bar:100%"></div><b>797<small>명</small></b></div><div><span>12월 갱신</span><div class="bar" style="--bar:46.173%"></div><b>368<small>명</small></b></div><div class="annual"><span>연간권 기록</span><div class="bar" style="--bar:17.064%"></div><b>136<small>명</small></b></div></div>
+      <p class="evidence-source">2022년 11월 할인 유입 코호트 · 개인 프로젝트</p>
+    </div>
+  </section>
+
+  <section class="work-index wrap" id="work" aria-labelledby="work-title">
+    <div class="section-top"><div><p class="eyebrow">SELECTED WORK</p><h2 id="work-title">세 가지 질문, 세 가지 분석</h2></div><p>문제 정의부터 해석과 다음 액션까지</p></div>
+    <div class="index-grid">
+      <a href="#subscription"><span class="index-number">01 / RETENTION</span><h3>할인 유입 고객<br>재구독 분석</h3><p>가격 너머의 학습 행동을 살펴보다</p><span class="index-bottom">개인 프로젝트 <span aria-hidden="true">↘</span></span></a>
+      <a href="#office"><span class="index-number">02 / CONVERSION</span><h3>공유오피스<br>결제율 하락 분석</h3><p>원인을 단정하기 전에, 고객에게 묻다</p><span class="index-bottom">2인 공동 프로젝트 <span aria-hidden="true">↘</span></span></a>
+      <a href="#seoul"><span class="index-number">03 / COMMERCIAL ANALYTICS</span><h3>서울 상권<br>매출성과 분석</h3><p>매출성과를 거래와 업종 구조로 나누다</p><span class="index-bottom">개인 프로젝트 <span aria-hidden="true">↘</span></span></a>
+    </div>
+  </section>
+
+  <section class="project subscription" id="subscription" aria-labelledby="sub-title">
+    <div class="wrap">
+      <div class="project-heading"><p class="eyebrow">01 / SUBSCRIPTION RETENTION</p><span class="project-owner">개인 프로젝트</span></div>
+      <div class="project-layout">
+        <div class="project-copy"><h2 id="sub-title">할인 고객의<br>다음 결제를 들여다보다</h2><p class="project-lead">할인으로 유입된 고객은<br>가격에만 민감한 고객이었을까?</p>
+          <dl class="facts"><div><dt>대상</dt><dd>2022년 11월 할인 유입 고객 797명</dd></div><div><dt>확인</dt><dd>12월 갱신 · 연간권 기록 · 학습 행동</dd></div><div><dt>도구</dt><dd>Python · pandas · matplotlib</dd></div></dl>
+          <div class="takeaway"><span class="label">발견한 점</span><p>갱신자 368명 중 136명에게 연간권 기록이 있었습니다. 할인 유입 고객의 콘텐츠 완주율도 정상가 고객보다 높게 나타났습니다.</p></div>
+          <div class="next-step"><span class="label">다음 액션</span><p>활동이 이어지는 고객에게 연간권을 안내하고, 비교 실험으로 전환 효과를 확인하는 방안을 제안했습니다.</p></div>
+          <div class="project-links"><a class="text-link" href="files/subscription-retention.pdf" target="_blank" rel="noopener noreferrer">발표자료 PDF <span aria-hidden="true">↗</span></a><a class="text-link" href="https://github.com/geunjb-git/geunjb-git/blob/main/projects/subscription-retention-analysis/subscription_retention_analysis.ipynb" target="_blank" rel="noopener noreferrer">분석 노트북 <span aria-hidden="true">↗</span></a></div>
+        </div>
+        <div class="project-visual">
+          <div class="chart-panel">
+            <div class="chart-controls" role="group" aria-label="구독서비스 분석 그래프 선택"><button type="button" class="active" data-view="funnel" aria-pressed="true">갱신 흐름</button><button type="button" data-view="learning" aria-pressed="false">학습 참여</button></div>
+            <div id="subscription-chart" aria-live="polite"></div>
+          </div>
+          <p class="chart-note" id="subscription-note">연간권 비중의 분모는 12월 갱신자 368명입니다. 연간권 기록은 12월 해당 상품의 갱신 기록이 한 번 이상 있는 고객을 뜻합니다.</p>
+        </div>
+      </div>
+      <div class="project-footnote"><span>해석의 범위</span><p>관측한 행동 차이는 인과효과나 실제 CRM 실행 성과를 뜻하지 않습니다. 행동 지표는 원본 전처리 CSV 정의를 유지했습니다.</p><a href="https://github.com/geunjb-git/geunjb-git/blob/main/projects/subscription-retention-analysis/metric_notes.md" target="_blank" rel="noopener noreferrer">지표 기준 보기 ↗</a></div>
+    </div>
+  </section>
+
+  <section class="project office" id="office" aria-labelledby="office-title">
+    <div class="wrap">
+      <div class="project-heading"><p class="eyebrow">02 / TRIAL TO PAID CONVERSION</p><span class="project-owner">2인 전 과정 공동 수행</span></div>
+      <div class="project-layout">
+        <div class="project-copy"><h2 id="office-title">이용은 늘었는데,<br>결제는 왜 줄었을까?</h2><p class="project-lead">3일 무료체험 이후 결제율 하락을<br>행동 데이터만으로 설명할 수 있을까?</p>
+          <dl class="facts"><div><dt>기간</dt><dd>2022년 · 2023년 11~12월 비교</dd></div><div><dt>대상</dt><dd>신청자 1,144명 · 방문 기록 고객 873명</dd></div><div><dt>도구</dt><dd>Python · pandas · statsmodels</dd></div></dl>
+          <div class="takeaway"><span class="label">발견한 점</span><p>방문과 이용이 활발해졌어도 결제율은 낮았습니다. 행동·경쟁사 자료만으로 하락 원인을 확정하기는 어려웠습니다.</p></div>
+          <div class="next-step"><span class="label">다음 액션</span><p>미결제 사유 투표로 가설을 좁히고, A/B 테스트에서 검증한 대응안을 CRM에 적용하는 순서를 제안했습니다.</p></div>
+          <div class="project-links"><a class="text-link" href="files/office-payment-analysis.pptx" download>편집 가능한 발표자료 <span aria-hidden="true">↓</span></a><a class="text-link" href="https://github.com/geunjb-git/geunjb-git/blob/main/projects/office-payment-analysis/office_payment_analysis.ipynb" target="_blank" rel="noopener noreferrer">분석 노트북 <span aria-hidden="true">↗</span></a></div>
+        </div>
+        <div class="project-visual"><div class="chart-panel"><div class="chart-controls" role="group" aria-label="공유오피스 결제율 그래프 선택"><button type="button" class="active" data-office="applicant" aria-pressed="true">전체 신청자</button><button type="button" data-office="visitor" aria-pressed="false">방문 기록 고객</button></div><div id="office-chart" aria-live="polite"></div></div><p class="chart-note" id="office-note">월별 결제 고객 수 ÷ 해당 월 전체 신청자 수. 같은 달의 두 연도를 비교했습니다.</p>
+          <div class="experiment-flow" aria-label="후속 검증 순서"><span><b>01</b>사유 투표</span><i aria-hidden="true">→</i><span><b>02</b>A/B 테스트</span><i aria-hidden="true">→</i><span><b>03</b>CRM 적용</span></div>
+        </div>
+      </div>
+      <div class="project-footnote"><span>수행과 제안</span><p>두 사람이 문제 정의부터 분석·해석·제안까지 함께 수행했습니다. 투표·실험·CRM은 후속 제안이며 실행 성과로 주장하지 않습니다.</p><a href="https://github.com/geunjb-git/geunjb-git/tree/main/projects/office-payment-analysis" target="_blank" rel="noopener noreferrer">프로젝트 상세 ↗</a></div>
+    </div>
+  </section>
+
+  <section class="project seoul" id="seoul" aria-labelledby="seoul-title">
+    <div class="wrap">
+      <div class="project-heading"><p class="eyebrow">03 / SEOUL COMMERCIAL ANALYTICS</p><span class="project-owner">개인 프로젝트</span></div>
+      <div class="project-layout">
+        <div class="project-copy"><h2 id="seoul-title">같은 유동량,<br>다른 매출성과</h2><p class="project-lead">높은 매출성과를 보이는 상권은<br>거래와 업종 구조가 어떻게 다를까?</p>
+          <dl class="facts"><div><dt>기간</dt><dd>2025년 1~4분기</dd></div><div><dt>범위</dt><dd>공공데이터 7종 · 연간 비교 1,558개 상권</dd></div><div><dt>도구</dt><dd>SQL · Python · BigQuery · dbt · Looker Studio</dd></div></dl>
+          <div class="takeaway"><span class="label">발견한 점</span><p>유형별 상·하위 집단의 차이는 평균 결제금액보다 거래 발생 강도에서 컸습니다. 강남 마이스는 업종 매출이 분산된 고성과 사례였습니다.</p></div>
+          <div class="next-step"><span class="label">구현한 것</span><p>데이터 수집·정제·결합부터 지표 정의와 분석, 상권을 직접 탐색하는 대시보드까지 구성했습니다.</p></div>
+          <div class="project-links"><a class="text-link" href="https://datastudio.google.com/reporting/d8b2094c-6cb4-46ab-b319-6d493e19e47f" target="_blank" rel="noopener noreferrer">대시보드 열기 <span aria-hidden="true">↗</span></a><a class="text-link" href="https://github.com/geunjb-git/seoul-commercial-analysis" target="_blank" rel="noopener noreferrer">분석 코드 <span aria-hidden="true">↗</span></a><a class="text-link" href="files/seoul-commercial-analysis.pptx" download>발표자료 <span aria-hidden="true">↓</span></a></div>
+        </div>
+        <div class="project-visual">
+          <div class="dashboard-frame"><div class="dashboard-caption"><span>ANALYSIS SNAPSHOT</span><span>핵심 분석 결과</span></div><button class="image-zoom" type="button" aria-label="서울 상권 분석 미리보기 크게 보기"><img src="assets/seoul-preview.png" alt="유동량 대비 매출성과 상위 5곳은 시장·도매형 상권이며 상권 구조와 매출 포착 범위를 함께 확인해야 한다는 분석 결과" loading="lazy" width="1280" height="720"><span>미리보기 확대 <span aria-hidden="true">↗</span></span></button></div>
+          <div class="seoul-metrics"><div><strong>1,558<span>개</span></strong><p>연간 비교 상권</p></div><div><strong>21.2<span>%</span></strong><p>강남 마이스 1위 업종 매출 비중</p></div><div><strong>0.093</strong><p>강남 마이스 업종 집중도 HHI</p></div></div>
+          <p class="chart-note">2025년 1~4분기. 상권 유형과 거래·업종 구성을 함께 비교했습니다.</p>
+        </div>
+      </div>
+      <div class="project-footnote"><span>지표의 의미</span><p>매출성과는 연간 매출액 ÷ 추정 유동량입니다. 고객·주문 단위 데이터가 없어 실제 구매 전환율이나 재구매율로 해석하지 않습니다.</p><a href="https://github.com/geunjb-git/seoul-commercial-analysis/blob/main/docs/analysis-notes.md" target="_blank" rel="noopener noreferrer">분석 기준 보기 ↗</a></div>
+    </div>
+  </section>
+
+  <section class="about wrap" id="about" aria-labelledby="about-title"><div><p class="eyebrow">ABOUT ME</p><h2 id="about-title">상담에서 배운 질문을<br>분석으로 이어갑니다.</h2><p>SSG 고객센터와 학점은행제·독학학위제 상담 현장에서 고객의 상황을 듣고 문제를 해결했습니다. 이제 고객의 말과 행동을 함께 살펴보는 데이터 분석가를 목표로 하고 있습니다.</p><a class="text-link" href="https://github.com/geunjb-git" target="_blank" rel="noopener noreferrer">GitHub에서 더 보기 ↗</a></div><div class="approach"><article><span>01</span><div><h3>비교 기준부터 명확하게</h3><p>대상·기간·집계 단위와 지표의 분모를 먼저 확인합니다.</p></div></article><article><span>02</span><div><h3>데이터가 말하는 범위까지</h3><p>관측된 관계와 원인을 구분하고, 분석의 한계를 설명합니다.</p></div></article><article><span>03</span><div><h3>다음에 확인할 질문으로</h3><p>발견한 점을 추가 수집·비교 실험·고객 대응 제안으로 연결합니다.</p></div></article></div></section>
+</main>
+<footer class="footer wrap"><a class="brand" href="#top"><span class="monogram">BG.</span><span>정봉근 · Data Analyst Portfolio</span></a><p>고객 행동 · 결제 전환 · 상권 분석</p><a href="#top">맨 위로 ↑</a></footer>
+<dialog id="image-dialog" aria-label="서울 상권 분석 결과 미리보기"><button type="button" class="dialog-close" aria-label="미리보기 닫기">닫기 ×</button><img src="assets/seoul-preview.png" alt="서울 상권 분석 결과 확대 미리보기"><a href="https://datastudio.google.com/reporting/d8b2094c-6cb4-46ab-b319-6d493e19e47f" target="_blank" rel="noopener noreferrer">실제 대시보드에서 탐색하기 ↗</a></dialog>
+</body>
+</html>
