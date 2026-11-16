@@ -1,0 +1,5 @@
+scenario,total_requests,on_time_count,on_time_rate_pct
+기존 데이터,100,35,35
+배정 대기 최대 20분,100,45,45
+배정 대기 최대 10분,100,59,59
+즉시 배정,100,70,70

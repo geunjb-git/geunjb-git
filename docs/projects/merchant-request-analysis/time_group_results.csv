@@ -1,0 +1,3 @@
+received_time_group,request_count,actual_on_time_count,actual_on_time_rate_pct,simulated_on_time_count,simulated_on_time_rate_pct
+10:00~10:29,53,32,60.4,51,96.2
+10:30~10:59,47,3,6.4,8,17.0

@@ -1,0 +1,38 @@
+[
+  {
+    "name": "request_id",
+    "type": "STRING"
+  },
+  {
+    "name": "store_id",
+    "type": "STRING"
+  },
+  {
+    "name": "request_type",
+    "type": "STRING"
+  },
+  {
+    "name": "received_at",
+    "type": "TIMESTAMP"
+  },
+  {
+    "name": "assigned_at",
+    "type": "TIMESTAMP"
+  },
+  {
+    "name": "completed_at",
+    "type": "TIMESTAMP"
+  },
+  {
+    "name": "status",
+    "type": "STRING"
+  },
+  {
+    "name": "snapshot_at",
+    "type": "TIMESTAMP"
+  },
+  {
+    "name": "target_at",
+    "type": "TIMESTAMP"
+  }
+]
