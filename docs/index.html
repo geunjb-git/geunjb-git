@@ -12,6 +12,14 @@
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 80'%3E%3Crect width='80' height='80' rx='20' fill='%231f5146'/%3E%3Ctext x='40' y='54' font-family='Arial' font-size='42' text-anchor='middle' fill='white'%3EB%3C/text%3E%3C/svg%3E">
   <link rel="stylesheet" href="style.css">
   <script src="app.js" defer></script>
+<style>
+.merchant-case{margin:0 auto 58px;padding:27px 30px;border:1px solid #ccd7cb;background:#edf2e8;display:flex;align-items:center;justify-content:space-between;gap:28px}
+.merchant-case .case-label{font-size:10px;letter-spacing:.12em;font-weight:800;color:#215344}
+.merchant-case h2{font-size:25px;line-height:1.3;margin:8px 0}
+.merchant-case p{font-size:13px;color:#65716a;max-width:690px}
+.merchant-case>a{flex-shrink:0;display:inline-block;padding:12px 17px;background:#215344;color:white;font-size:12px;font-weight:750}
+@media(max-width:640px){.merchant-case{display:block;padding:22px;margin-bottom:35px}.merchant-case h2{font-size:22px}.merchant-case>a{margin-top:17px}}
+</style>
 </head>
 <body>
 <a class="skip" href="#main">본문으로 건너뛰기</a>
@@ -45,6 +53,11 @@
       <a href="#office"><span class="index-number">02 / CONVERSION</span><h3>공유오피스<br>결제율 하락 분석</h3><p>원인을 단정하기 전에, 고객에게 묻다</p><span class="index-bottom">2인 공동 프로젝트 <span aria-hidden="true">↘</span></span></a>
       <a href="#seoul"><span class="index-number">03 / COMMERCIAL ANALYTICS</span><h3>서울 상권<br>매출성과 분석</h3><p>매출성과를 거래와 업종 구조로 나누다</p><span class="index-bottom">개인 프로젝트 <span aria-hidden="true">↘</span></span></a>
     </div>
+  </section>
+
+  <section class="merchant-case wrap" aria-labelledby="merchant-case-title">
+    <div><span class="case-label">SQL OPERATIONS CASE · 가상 데이터 100건</span><h2 id="merchant-case-title">점심 판매 타깃 지점, 점심 판매 전 수정 요청을 끝낼 수 있을까?</h2><p>배정 대기와 처리 시간을 나누고 운영 기준을 제안했습니다. 전체 목표 내 완료율은 배정 대기 최대 10분 가정에서 35% → 59%로 계산됐습니다.</p></div>
+    <a href="projects/merchant-request-analysis/">분석과 SQL 살펴보기 ↗</a>
   </section>
 
   <section class="project subscription" id="subscription" aria-labelledby="sub-title">
