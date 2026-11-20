@@ -18,6 +18,12 @@
 
 [서울 상권 분석 코드](https://github.com/geunjb-git/seoul-commercial-analysis) · [서울 상권 대시보드](https://datastudio.google.com/reporting/d8b2094c-6cb4-46ab-b319-6d493e19e47f)
 
+## 텍스트 라벨링·EDA 사례
+
+[SNS 질문 라벨 검토·수정과 콘텐츠 반응 EDA](projects/sns-question-labeling/README.md)
+
+AI 초기 분류 결과를 문맥에 맞게 검토·수정한 팀 프로젝트 참여 경험과, 카테고리별 사용자 반응 EDA 결과를 정리했습니다. 라벨 변경 예시·집계 CSV·요약 노트북을 함께 제공합니다.
+
 ## 분석에서 중요하게 보는 것
 
 - 비교 대상과 지표의 분모를 먼저 확인합니다.
@@ -27,3 +33,4 @@
 ## 교육
 
 코드잇 AI 활용 데이터 분석가 부트캠프 수료 · 2026.03~2026.10
+
