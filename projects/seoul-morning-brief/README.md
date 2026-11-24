@@ -44,7 +44,7 @@ python -m unittest discover -s projects/seoul-morning-brief -p 'test_*.py' -v
 python projects/seoul-morning-brief/collector.py --mode manual
 ```
 
-인증키는 로컬 환경변수 또는 GitHub의 **Settings → Secrets and variables → Actions → Repository secrets**에 `SEOUL_API_KEY`로 저장합니다. 소스 코드·설정 파일·출력 파일에는 키를 적지 않습니다. GitHub Actions는 이 비밀값을 환경변수로 전달합니다.
+인증키는 로컬 환경변수 또는 GitHub의 **Settings → Secrets and variables → Actions → Repository secrets**에 `SEOUL_API_KEY`로 저장합니다. 소스 코드·설정 파일·출력 파일에는 키를 적지 않습니다. GitHub Actions는 이 비밀값을 환경변수로 전달합니다. 인증키 등록 후 저장소 Actions 변수 `SEOUL_MORNING_ENABLED`를 `true`로 설정해야 수집이 시작됩니다. 그 전에는 예약 작업을 건너뜁니다.
 
 GitHub Actions 화면에서 수동 실행을 성공시킨 뒤 실제 예약 실행 이력을 확인합니다. 공개 저장소의 표준 Linux runner를 사용하며 유료 서비스나 유료 runner를 설정하지 않습니다. 알림은 GitHub 계정의 Actions 알림 설정에서 이메일·웹 수신 여부를 확인해야 합니다. 실제 알림 수신을 확인하기 전에는 알림이 연결되었다고 주장하지 않습니다.
 
