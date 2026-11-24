@@ -38,7 +38,8 @@ jobs:
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add docs/projects/seoul-morning-brief/data
+          # 저장소의 일반 data/ 제외 규칙과 구분해 이 공개 집계 폴더만 추가.
+          git add -f -- docs/projects/seoul-morning-brief/data
           if ! git diff --cached --quiet; then
             git commit -m 'data: refresh Seocho morning snapshot'
             git pull --rebase origin main
