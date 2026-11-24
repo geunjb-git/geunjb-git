@@ -1,0 +1,49 @@
+name: Seocho morning city data
+
+on:
+  schedule:
+    # UTC 22:30 = 다음 날 한국 시각 오전 07:30. GitHub 상황에 따라 지연될 수 있습니다.
+    - cron: '30 22 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: seoul-morning-brief
+  cancel-in-progress: false
+
+jobs:
+  collect:
+    # 인증키 등록과 첫 실행 확인 전에는 예약 수집을 시작하지 않음.
+    if: vars.SEOUL_MORNING_ENABLED == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Test validation and safe retry behavior
+        run: python -m unittest discover -s projects/seoul-morning-brief -p 'test_*.py' -v
+      - name: Collect and validate Seoul data
+        id: collect
+        continue-on-error: true
+        env:
+          SEOUL_API_KEY: ${{ secrets.SEOUL_API_KEY }}
+          RUN_MODE: ${{ github.event_name == 'schedule' && 'scheduled' || 'manual' }}
+        run: python projects/seoul-morning-brief/collector.py --mode "$RUN_MODE"
+      - name: Save data and run status
+        if: always() && steps.collect.outcome != 'skipped'
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add docs/projects/seoul-morning-brief/data
+          if ! git diff --cached --quiet; then
+            git commit -m 'data: refresh Seocho morning snapshot'
+            git pull --rebase origin main
+            git push
+          fi
+      - name: Mark an incomplete collection as failed
+        if: always() && steps.collect.outcome == 'failure'
+        run: exit 1
