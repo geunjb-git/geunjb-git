@@ -1,0 +1,8 @@
+{
+  "areas": [
+    {"name": "교대역", "code": "POI018"},
+    {"name": "고속터미널역", "code": "POI017"},
+    {"name": "양재역", "code": "POI041"}
+  ],
+  "stale_after_minutes": 120
+}
