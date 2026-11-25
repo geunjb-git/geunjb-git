@@ -1,6 +1,11 @@
 {
   "days": [
     {
+      "date": "2026-11-25",
+      "json": "daily/2026-11-25.json",
+      "csv": "daily/2026-11-25.csv"
+    },
+    {
       "date": "2026-11-24",
       "json": "daily/2026-11-24.json",
       "csv": "daily/2026-11-24.csv"
