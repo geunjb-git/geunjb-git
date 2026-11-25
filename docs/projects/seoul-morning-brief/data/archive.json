@@ -3,7 +3,11 @@
     {
       "date": "2026-11-25",
       "json": "daily/2026-11-25.json",
-      "csv": "daily/2026-11-25.csv"
+      "csv": "daily/2026-11-25.csv",
+      "parking_csv": "daily/2026-11-25-parking.csv",
+      "charging_stations_csv": "daily/2026-11-25-charging_stations.csv",
+      "chargers_csv": "daily/2026-11-25-chargers.csv",
+      "facility_issues_csv": "daily/2026-11-25-facility_issues.csv"
     },
     {
       "date": "2026-11-24",
