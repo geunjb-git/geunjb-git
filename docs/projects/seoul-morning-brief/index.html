@@ -9,6 +9,7 @@
     :root{color-scheme:light;--bg:#f4f6f3;--ink:#1e3430;--muted:#5b6b63;--line:#d9e2db;--paper:#fff;--green:#26654a;--soft:#e8efe6;--orange:#8a4918;--warning:#fff0dc}
     *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.65 system-ui,-apple-system,"Malgun Gothic",sans-serif}a{color:var(--green);text-underline-offset:4px}button,a:focus-visible{outline-offset:4px}button{font:inherit;cursor:pointer}main{max-width:1120px;margin:auto;padding:32px 24px 64px}.top{display:flex;justify-content:space-between;gap:16px;align-items:center;flex-wrap:wrap;font-size:14px}.top a{text-decoration:none}.eyebrow{font-size:13px;letter-spacing:.08em;font-weight:700;color:var(--green)}header{padding:44px 0 28px}h1{font-size:clamp(30px,5vw,48px);line-height:1.25;letter-spacing:-.05em;margin:10px 0 16px}h2{font-size:22px;letter-spacing:-.03em;margin:0}h3{font-size:18px;margin:0}.intro{color:var(--muted);margin:0;max-width:700px}.meta{display:flex;flex-wrap:wrap;gap:10px 22px;margin:23px 0 0;font-size:14px}.meta strong{color:var(--green)}.notice{padding:13px 17px;background:var(--soft);border-radius:10px;margin:0 0 22px;font-size:14px}.notice.warn{background:var(--warning);color:var(--orange)}.toolbar{display:flex;justify-content:space-between;gap:12px;align-items:center;flex-wrap:wrap;margin:28px 0 16px}.actions{display:flex;gap:15px;flex-wrap:wrap;font-size:14px}.places{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:17px}.place{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:24px;min-width:0}.place-head{display:flex;justify-content:space-between;align-items:center;gap:8px}.badge{background:var(--soft);color:var(--green);padding:4px 10px;border-radius:20px;font-size:12px;white-space:nowrap}.badge.busy{color:var(--orange);background:var(--warning)}.big{font-size:34px;font-weight:700;letter-spacing:-.05em;margin-top:25px;line-height:1.35}.label{font-size:13px;color:var(--muted)}.sub{font-size:14px;color:var(--muted);margin:5px 0 0}.metrics{display:grid;grid-template-columns:1fr 1fr;gap:16px;padding-top:20px;margin-top:20px;border-top:1px solid var(--line)}.value{font-size:21px;font-weight:650;overflow-wrap:anywhere}.message{font-size:14px;margin:20px 0 0}.times{font-size:12px;color:var(--muted);margin:20px 0 0;padding-top:15px;border-top:1px solid var(--line);list-style:none;padding-left:0}.quality{font-size:13px;color:var(--orange);margin:12px 0 0}.explain{margin-top:34px;padding:24px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);display:grid;grid-template-columns:1fr 1fr;gap:28px}.explain p{font-size:14px;color:var(--muted);margin:9px 0 0}.history{margin-top:30px}.history-list{display:flex;gap:12px;flex-wrap:wrap;font-size:14px;margin-top:14px}.history-list a{padding:7px 12px;border:1px solid var(--line);border-radius:8px;background:var(--paper)}footer{font-size:12px;color:var(--muted);margin-top:35px}footer p{margin:6px 0}.loading{grid-column:1/-1;padding:35px;text-align:center;color:var(--muted)}.error-card{color:var(--orange);margin-top:24px;font-size:14px}button{background:transparent;border:1px solid var(--line);border-radius:8px;padding:7px 12px;color:var(--ink)}
     @media(max-width:850px){.places{grid-template-columns:1fr}.place{padding:22px}.big{margin-top:15px}.explain{grid-template-columns:1fr;gap:20px}.metrics{grid-template-columns:repeat(3,1fr)}}@media(max-width:430px){main{padding:22px 16px 45px}header{padding-top:32px}.metrics{grid-template-columns:1fr 1fr}.toolbar{align-items:flex-start;flex-direction:column}.place-head{flex-wrap:wrap}}
+    .facilities{margin-top:40px}.section-intro{color:var(--muted);margin:7px 0 18px;font-size:15px}.facility-controls{display:flex;justify-content:space-between;gap:18px;align-items:center;flex-wrap:wrap;margin:18px 0}select{font:inherit;padding:8px 36px 8px 12px;border:1px solid var(--line);border-radius:8px;background:var(--paper);color:var(--ink)}.tabs{display:flex;gap:8px}.tabs button[aria-selected="true"]{background:var(--green);color:white;border-color:var(--green)}.facility-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:18px 0}.stat{background:var(--soft);border-radius:12px;padding:14px 18px}.stat strong{font-size:24px;display:block}.stat span{font-size:14px;color:var(--muted)}.facility-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.facility{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:20px;min-width:0}.facility h3{line-height:1.4}.facility p{font-size:14px;margin:8px 0}.facility .address{color:var(--muted);min-height:24px}.facility-detail{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:16px 0}.facility-detail dt{font-size:14px;color:var(--muted)}.facility-detail dd{margin:2px 0 0;font-size:17px;font-weight:600}.facility .restriction{color:var(--orange);background:var(--warning);padding:9px 12px;border-radius:8px}.facility .timestamp{font-size:12px;color:var(--muted)}details{border-top:1px solid var(--line);margin-top:16px;padding-top:12px}summary{cursor:pointer;font-size:14px;font-weight:600}.charger{padding:12px 0;border-bottom:1px solid var(--line)}.charger:last-child{border:0}.download{margin-top:20px}.facility-note{font-size:14px;padding:12px 16px;border-left:3px solid var(--green);background:var(--soft);margin:16px 0}.archive-day{border:1px solid var(--line);border-radius:10px;background:var(--paper);padding:10px 14px}.archive-day a{border:0;padding:0 10px 0 0;background:none;display:inline-block}.archive-day strong{display:block;font-size:14px;margin-bottom:4px}[hidden]{display:none!important}@media(max-width:700px){.facility-list{grid-template-columns:1fr}.facility-stats{gap:8px}.stat{padding:12px}.stat strong{font-size:22px}.stat span{font-size:13px}}
   </style>
 </head>
 <body>
@@ -17,12 +18,21 @@
   <header>
     <div class="eyebrow">SEOCHO MORNING BRIEF</div>
     <h1>출근 전, 서초의 지금.</h1>
-    <p class="intro">교대역 · 고속터미널역 · 양재역<br>사람이 얼마나 모였는지, 주변 도로와 날씨는 어떤지 한 번에 확인하세요.</p>
+    <p class="intro">교대역 · 고속터미널역 · 양재역<br>지역 혼잡도와 날씨부터 주차장·전기차 충전소까지 확인하세요.</p>
     <div class="meta"><span>목표 수집 시각 <strong>매일 오전 7:30 · 한국 시각</strong></span><span id="collected">최근 수집 확인 중</span></div>
   </header>
   <div id="notice" class="notice" role="status" aria-live="polite">저장소의 최신 수집 결과를 읽고 있습니다.</div>
   <div class="toolbar"><h2>지역별 현황</h2><div class="actions"><a id="csv" href="data/latest.csv">CSV 내려받기</a><a id="json" href="data/latest.json">JSON 원본 값</a><button id="reload" type="button">다시 확인</button></div></div>
   <section id="places" class="places" aria-label="지역별 도시정보"><div class="loading">데이터를 불러오는 중입니다.</div></section>
+  <section class="facilities" aria-labelledby="facilities-title">
+    <h2 id="facilities-title">자동차 이용 정보</h2>
+    <p class="section-intro">지역별 주차장과 충전소의 위치·이용 조건을 함께 확인하세요.</p>
+    <div class="facility-controls"><label>지역 <select id="area-select" aria-label="시설 정보를 볼 지역"><option>불러오는 중</option></select></label><div class="tabs" role="tablist" aria-label="시설 종류"><button id="parking-tab" role="tab" aria-selected="true" aria-controls="facility-panel" type="button">주차장</button><button id="charging-tab" role="tab" aria-selected="false" aria-controls="facility-panel" type="button">전기차 충전소</button></div></div>
+    <div id="facility-stats" class="facility-stats"></div>
+    <div id="facility-panel" role="tabpanel" aria-labelledby="parking-tab"><p class="loading">시설 정보를 불러오는 중입니다.</p></div>
+    <div id="facility-downloads" class="actions download" hidden><a id="parking-csv" href="data/parking.csv">주차장 CSV</a><a id="stations-csv" href="data/charging_stations.csv">충전소 CSV</a><a id="chargers-csv" href="data/chargers.csv">개별 충전기 CSV</a><a id="issues-csv" href="data/facility_issues.csv">보류 항목 CSV</a></div>
+    <p class="section-intro" style="margin-top:16px">저장된 수집 시점의 정보입니다. 이동 중 실시간 갱신이나 주차·충전 예약을 제공하지 않습니다. 요금·운영시간·이용 조건은 현장 안내를 함께 확인하세요.</p>
+  </section>
   <section class="explain" aria-label="정보를 읽는 방법">
     <div><h3>혼잡도의 의미</h3><p>서울시가 추정한 역 주변 지역의 인구 혼잡도입니다. 지하철 객차의 혼잡도나 출근 소요시간을 뜻하지 않습니다. 인구 수는 추정 범위로 표시합니다.</p></div>
     <div><h3>수집 시각과 기준 시각</h3><p>인구·도로·날씨 정보는 각각의 기준 시각을 표시합니다. 예약 실행과 웹 반영은 지연될 수 있으므로 최신 수집 날짜를 확인하세요. 다시 확인 버튼은 저장된 결과를 읽습니다.</p></div>
@@ -42,6 +52,45 @@
   const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const shortTime = s => s ? s.replace('T',' ').replace(/\+09:00$/, '') : '정보 없음';
   const unit = (n,u) => n === null || n === undefined ? '정보 없음' : fmt(n)+u;
+  let currentData = null, facilityTab = 'parking';
+  const accessLabel = value => ({restricted:'이용 제한 있음',unrestricted:'제한 없음으로 제공',unknown:'이용 조건 확인 필요'}[value] || '이용 조건 확인 필요');
+  const paidLabel = value => value==='Y' ? '유료' : value==='N' ? '무료로 제공' : '정보 없음';
+  const notes = row => (row.quality_notes || []).length ? '<p class="quality">확인 필요 · '+row.quality_notes.map(esc).join(' / ')+'</p>' : '';
+  function parkingCard(p) {
+    const live = p.live_provided==='Y';
+    const available = live ? unit(p.available_spaces,'면') : '실시간 미제공';
+    const fee = p.base_fee_won!==null && p.base_fee_won!==undefined && p.base_minutes!==null && p.base_minutes!==undefined ? `${fmt(p.base_minutes)}분 ${fmt(p.base_fee_won)}원` : '기본 요금 정보 없음';
+    const extra = p.additional_fee_won!==null && p.additional_fee_won!==undefined && p.additional_minutes!==null && p.additional_minutes!==undefined ? `추가 ${fmt(p.additional_minutes)}분 ${fmt(p.additional_fee_won)}원` : '추가 요금 정보 없음';
+    return `<article class="facility"><div class="place-head"><h3>${esc(p.name)}</h3><span class="badge">${esc(paidLabel(p.paid))}</span></div><p class="address">${esc(p.address || '주소 정보 없음')}</p><dl class="facility-detail"><div><dt>주차 가능 면수</dt><dd>${esc(available)}</dd></div><div><dt>전체 수용 면수</dt><dd>${unit(p.capacity,'면')}</dd></div></dl><p>${esc(fee)} · ${esc(extra)}</p>${live?'<p class="timestamp">주차 현황 기준 · '+esc(p.availability_time || '정보 없음')+'</p>':''}${notes(p)}</article>`;
+  }
+  function stationCard(s, chargers) {
+    const children = chargers.filter(c=>c.station_id===s.station_id);
+    const restriction = s.access_status==='unrestricted' ? '' : `<p class="restriction">${esc(s.limit_detail || '출입·이용 대상은 현장에 확인하세요.')}</p>`;
+    return `<article class="facility"><div class="place-head"><h3>${esc(s.name)}</h3><span class="badge${s.access_status!=='unrestricted'?' busy':''}">${esc(accessLabel(s.access_status))}</span></div><p class="address">${esc(s.address || '주소 정보 없음')}</p>${restriction}<p>이용시간 · ${esc(s.use_time || '정보 없음')}</p><p>주차 요금 · ${esc(paidLabel(s.parking_paid))}</p><details><summary>개별 충전기 ${fmt(children.length)}대 · 상태 확인</summary>${children.map(c=>`<div class="charger"><p><strong>${esc(c.charger_type || '유형 정보 없음')}</strong> · ${esc(c.status || '상태 정보 없음')}</p><p>충전기 ${esc(c.charger_id)} · 출력 ${unit(c.output_kw,' kW')}${c.method?' · '+esc(c.method):''}</p><p class="timestamp">상태 갱신 · ${esc(c.status_updated_at || '정보 없음')}</p>${notes(c)}</div>`).join('') || '<p>제공된 충전기 상세 정보가 없습니다.</p>'}</details>${notes(s)}</article>`;
+  }
+  function renderFacilities() {
+    const row = currentData?.records.find(r=>r.area_code===$('area-select').value);
+    $('parking-tab').setAttribute('aria-selected',String(facilityTab==='parking'));
+    $('charging-tab').setAttribute('aria-selected',String(facilityTab==='charging'));
+    $('facility-panel').setAttribute('aria-labelledby',facilityTab==='parking'?'parking-tab':'charging-tab');
+    if (!row || !row.facility_sections) {
+      $('facility-stats').innerHTML='';
+      $('facility-panel').innerHTML='<p class="facility-note">이 지역의 시설 정보는 아직 수집되지 않았습니다.</p>';return;
+    }
+    const parking=row.parking || [], stations=row.charging_stations || [], chargers=row.chargers || [];
+    $('facility-stats').innerHTML=[['수집 주차장',parking.length,'곳'],['수집 충전소',stations.length,'곳'],['개별 충전기',chargers.length,'대']].map(([label,n,u])=>`<div class="stat"><span>${label}</span><strong>${fmt(n)}<span> ${u}</span></strong></div>`).join('');
+    let message, cards;
+    if (facilityTab==='parking') {
+      const live = parking.filter(p=>p.live_provided==='Y').length;
+      message = !row.facility_sections.parking ? '원본에서 주차장 항목이 제공되지 않았습니다.' : live ? `실시간 연계 주차장 ${live}곳. 가능 면수와 기준 시각을 함께 확인하세요.` : '이 지역의 수집 주차장은 실시간 주차 가능 면수를 제공하지 않습니다. 빈자리가 0이라는 뜻은 아닙니다.';
+      cards=parking.map(parkingCard).join('');
+    } else {
+      message = !row.facility_sections.charging ? '원본에서 충전소 항목이 제공되지 않았습니다.' : '충전기 상태가 ‘사용가능’이어도 입주자 전용 등 이용 제한이 있을 수 있습니다. 상태 갱신 시각은 이번 수집 시각과 다를 수 있습니다.';
+      cards=stations.map(s=>stationCard(s,chargers)).join('');
+    }
+    const issues=(row.facility_issues || []).length;
+    $('facility-panel').innerHTML=`<p class="facility-note">${esc(message)}</p><div class="facility-list">${cards || '<p>표시할 시설이 없습니다.</p>'}</div>${issues?'<p class="quality">검수 중 보류한 항목 '+fmt(issues)+'건 · 보류 항목 CSV에서 사유를 확인할 수 있습니다.</p>':''}`;
+  }
   async function read(file) {
     const response = await fetch(base+file+'?t='+Date.now(), {cache:'no-store'});
     if (!response.ok) throw new Error('저장된 자료를 읽지 못했습니다.');
@@ -73,13 +122,24 @@
         return '<article class="place"><h3>'+esc(area.name)+'</h3><p class="error-card">'+esc(error?.reason || '이 지역의 정보가 없습니다.')+'</p></article>';
       }).join('');
       $('csv').href=base+'latest.csv';$('json').href=base+'latest.json';
-      $('history').innerHTML=archive.days.slice(0,14).map(day=>'<a href="'+base+esc(day.csv)+'">'+esc(day.date)+' CSV</a>').join('') || '아직 저장된 날짜가 없습니다.';
+      const previousArea=$('area-select').value;
+      currentData=data;
+      $('area-select').innerHTML=data.expected_areas.map(a=>`<option value="${esc(a.code)}">${esc(a.name)}</option>`).join('');
+      if(data.expected_areas.some(a=>a.code===previousArea)) $('area-select').value=previousArea;
+      renderFacilities();
+      $('facility-downloads').hidden=data.schema_version<2;
+      for(const [id,file] of [['parking-csv','parking'],['stations-csv','charging_stations'],['chargers-csv','chargers'],['issues-csv','facility_issues']]) $(id).href=base+file+'.csv';
+      $('history').innerHTML=archive.days.slice(0,14).map(day=>'<div class="archive-day"><strong>'+esc(day.date)+'</strong><a href="'+base+esc(day.csv)+'">지역 CSV</a>'+[['parking_csv','주차장'],['charging_stations_csv','충전소'],['chargers_csv','충전기']].filter(([key])=>day[key]).map(([key,label])=>'<a href="'+base+esc(day[key])+'">'+label+' CSV</a>').join('')+'</div>').join('') || '아직 저장된 날짜가 없습니다.';
     } catch (_) {
       $('notice').textContent='저장된 자료를 불러오지 못했습니다. 실행 이력을 확인하거나 잠시 후 다시 확인해주세요.';
       $('notice').className='notice warn';$('places').innerHTML='<div class="loading">최근 결과를 표시할 수 없습니다.</div>';
+      currentData=null;$('facility-stats').innerHTML='';$('facility-panel').innerHTML='<p>시설 정보를 읽지 못했습니다. 다시 확인해주세요.</p>';$('facility-downloads').hidden=true;
     } finally {$('reload').disabled=false;}
   }
   $('reload').addEventListener('click',load);
+  $('area-select').addEventListener('change',renderFacilities);
+  $('parking-tab').addEventListener('click',()=>{facilityTab='parking';renderFacilities();});
+  $('charging-tab').addEventListener('click',()=>{facilityTab='charging';renderFacilities();});
   load();
 })();
 </script>
