@@ -26,6 +26,17 @@ FIELDS = ["area_name", "area_code", "collected_at", "population_time", "congesti
           "traffic_speed_kmh", "weather_time", "temperature_c", "humidity_pct",
           "precipitation_type", "precipitation_message", "pm25", "pm25_status",
           "quality_notes"]
+PARKING_FIELDS = ["area_name", "area_code", "collected_at", "parking_id", "name",
+                  "address", "latitude", "longitude", "capacity", "live_provided",
+                  "available_spaces", "availability_time", "paid", "base_fee_won",
+                  "base_minutes", "additional_fee_won", "additional_minutes", "quality_notes"]
+STATION_FIELDS = ["area_name", "area_code", "collected_at", "station_id", "name", "address",
+                  "latitude", "longitude", "use_time", "parking_paid", "access_status",
+                  "limit_flag", "limit_detail", "kind", "received_charger_count", "charger_count", "quality_notes"]
+CHARGER_FIELDS = ["area_name", "area_code", "collected_at", "station_id", "station_name",
+                  "charger_id", "charger_type", "status", "status_updated_at", "output_kw",
+                  "method", "access_status", "limit_detail", "quality_notes"]
+ISSUE_FIELDS = ["area_name", "area_code", "section", "source_id", "reason"]
 
 
 class DataError(Exception):
@@ -61,6 +72,128 @@ def observation_time(value: str | None) -> datetime | None:
         return result.replace(tzinfo=KST) if result.tzinfo is None else result.astimezone(KST)
     except ValueError:
         return None
+
+
+def parse_facilities(city: ET.Element, area: dict, now: datetime, stale_minutes: int) -> dict:
+    """일대다 원본을 주차장·충전소·충전기 표로 분리. 잘못된 시설은 사유와 함께 보류."""
+    common = {"area_name": area["name"], "area_code": area["code"], "collected_at": now.isoformat(timespec="seconds")}
+    result = {"parking": [], "charging_stations": [], "chargers": [], "facility_issues": [],
+              "facility_sections": {"parking": city.find("PRK_STTS") is not None,
+                                    "charging": city.find("CHARGER_STTS") is not None}}
+
+    def issue(section: str, source_id: str | None, reason: str) -> None:
+        result["facility_issues"].append({"area_name": area["name"], "area_code": area["code"],
+                                         "section": section, "source_id": source_id, "reason": reason})
+
+    def nonnegative(node, tag, label):
+        value = number(text(node, tag), label)
+        if value is not None and value < 0:
+            raise DataError(label + ": 음수 확인 필요")
+        return value
+
+    def coordinates(row: dict, node, lat: str, lng: str) -> None:
+        row["latitude"] = number(text(node, lat), "위도")
+        row["longitude"] = number(text(node, lng), "경도")
+        if row["latitude"] is None or row["longitude"] is None:
+            row["quality_notes"].append("위치 좌표 미제공")
+        elif not (-90 <= row["latitude"] <= 90 and -180 <= row["longitude"] <= 180):
+            raise DataError("위도·경도 범위 오류")
+
+    seen_parking, seen_stations, seen_chargers = set(), set(), set()
+    for node in city.findall("PRK_STTS/PRK_STTS"):
+        identifier = text(node, "PRK_CD")
+        try:
+            name = text(node, "PRK_NM")
+            if not identifier or not name:
+                raise DataError("주차장 ID·이름 필수값 누락")
+            if identifier in seen_parking:
+                raise DataError("주차장 ID 중복: 후속 항목 보류")
+            row = {**common, "parking_id": identifier, "name": name,
+                   "address": text(node, "ROAD_ADDR") or text(node, "ADDRESS"),
+                   "capacity": nonnegative(node, "CPCTY", "주차장 수용 면수"),
+                   "live_provided": text(node, "CUR_PRK_YN"),
+                   "availability_time": text(node, "CUR_PRK_TIME"),
+                   "paid": text(node, "PAY_YN"),
+                   "base_fee_won": nonnegative(node, "RATES", "기본 요금"),
+                   "base_minutes": nonnegative(node, "TIME_RATES", "기본 요금 시간"),
+                   "additional_fee_won": nonnegative(node, "ADD_RATES", "추가 요금"),
+                   "additional_minutes": nonnegative(node, "ADD_TIME_RATES", "추가 요금 시간"),
+                   "quality_notes": []}
+            coordinates(row, node, "LAT", "LNG")
+            # CUR_PRK_CNT는 명세상 '주차 가능 면수'. 총 면수에서 다시 빼지 않음.
+            row["available_spaces"] = nonnegative(node, "CUR_PRK_CNT", "주차 가능 면수") if row["live_provided"] == "Y" else None
+            if row["capacity"] is not None and row["capacity"] % 1:
+                raise DataError("주차장 수용 면수가 정수가 아님")
+            if row["available_spaces"] is not None:
+                if row["available_spaces"] % 1:
+                    raise DataError("주차 가능 면수가 정수가 아님")
+                if row["capacity"] is not None and row["available_spaces"] > row["capacity"]:
+                    raise DataError("주차 가능 면수가 수용 면수를 초과함")
+            if row["live_provided"] == "Y":
+                if row["available_spaces"] is None:
+                    row["quality_notes"].append("실시간 연계 표시가 있으나 주차 가능 면수 없음")
+                observed = observation_time(row["availability_time"])
+                if observed is None:
+                    row["quality_notes"].append("주차 현황 기준 시각 확인 필요")
+                elif (now - observed).total_seconds() > stale_minutes * 60:
+                    row["quality_notes"].append("주차 현황 기준 시각이 오래됨")
+                elif (observed - now).total_seconds() > 600:
+                    row["quality_notes"].append("주차 현황 기준 시각이 미래임")
+            seen_parking.add(identifier)
+            result["parking"].append(row)
+        except DataError as error:
+            issue("PRK_STTS", identifier, str(error))
+
+    for node in city.findall("CHARGER_STTS/CHARGER_STTS"):
+        identifier = text(node, "STAT_ID")
+        try:
+            name = text(node, "STAT_NM")
+            if not identifier or not name:
+                raise DataError("충전소 ID·이름 필수값 누락")
+            if identifier in seen_stations:
+                raise DataError("충전소 ID 중복: 후속 항목 보류")
+            flag, detail = text(node, "STAT_LIMITYN"), text(node, "STAT_LIMITDETAIL")
+            access = "restricted" if flag == "Y" else ("unrestricted" if flag == "N" and not detail else "unknown")
+            row = {**common, "station_id": identifier, "name": name,
+                   "address": text(node, "STAT_ADDR"), "use_time": text(node, "STAT_USETIME"),
+                   "parking_paid": text(node, "STAT_PARKPAY"), "access_status": access,
+                   "limit_flag": flag, "limit_detail": detail, "kind": text(node, "STAT_KINDDETAIL"),
+                   "received_charger_count": len(node.findall("CHARGER_DETAILS/CHARGER_DETAILS")),
+                   "charger_count": 0, "quality_notes": []}
+            coordinates(row, node, "STAT_Y", "STAT_X")
+            if access == "unknown":
+                row["quality_notes"].append("이용 제한 여부·내용 확인 필요")
+            seen_stations.add(identifier)
+            result["charging_stations"].append(row)
+        except DataError as error:
+            issue("CHARGER_STTS", identifier, str(error))
+            continue
+        for charger in node.findall("CHARGER_DETAILS/CHARGER_DETAILS"):
+            charger_id = text(charger, "CHARGER_ID")
+            try:
+                if not charger_id:
+                    raise DataError("충전기 ID 필수값 누락")
+                unique = (identifier, charger_id)
+                if unique in seen_chargers:
+                    raise DataError("같은 충전소의 충전기 ID 중복: 후속 항목 보류")
+                item = {**common, "station_id": identifier, "station_name": name,
+                        "charger_id": charger_id, "charger_type": text(charger, "CHARGER_TYPE"),
+                        "status": text(charger, "CHARGER_STAT"),
+                        "status_updated_at": text(charger, "STATUPDDT"),
+                        "output_kw": nonnegative(charger, "OUTPUT", "충전기 출력"),
+                        "method": text(charger, "METHOD"), "access_status": access,
+                        "limit_detail": detail, "quality_notes": []}
+                if item["status"] is None:
+                    item["quality_notes"].append("충전기 상태 미제공")
+                # 상태 갱신 시각은 수집 시각과 다름. 과거 시각만으로 상태 오류로 판정하지 않음.
+                if observation_time(item["status_updated_at"]) is None:
+                    item["quality_notes"].append("충전기 상태 갱신 시각 확인 필요")
+                seen_chargers.add(unique)
+                result["chargers"].append(item)
+                row["charger_count"] += 1
+            except DataError as error:
+                issue("CHARGER_DETAILS", (identifier or "") + "/" + (charger_id or ""), str(error))
+    return result
 
 
 def parse_record(raw: bytes, area: dict, now: datetime, stale_minutes: int) -> dict:
@@ -120,6 +253,7 @@ def parse_record(raw: bytes, area: dict, now: datetime, stale_minutes: int) -> d
     for field in ["traffic_speed_kmh", "pm25"]:
         if row[field] is not None and row[field] < 0:
             raise DataError(field + ": 음수 확인 필요")
+    row.update(parse_facilities(city, area, now, stale_minutes))
     return row
 
 
@@ -147,12 +281,13 @@ def write_json(path: Path, value: dict) -> None:
     temporary.replace(path)
 
 
-def write_csv(path: Path, rows: list[dict]) -> None:
+def write_csv(path: Path, rows: list[dict], fields: list[str] | None = None) -> None:
+    fields = fields or FIELDS
     stream = io.StringIO(newline="")
-    writer = csv.DictWriter(stream, fieldnames=FIELDS, extrasaction="ignore")
+    writer = csv.DictWriter(stream, fieldnames=fields, extrasaction="ignore")
     writer.writeheader()
     for row in rows:
-        writer.writerow({k: "; ".join(v) if isinstance(v, list) else v for k, v in row.items() if k in FIELDS})
+        writer.writerow({k: "; ".join(v) if isinstance(v, list) else v for k, v in row.items() if k in fields})
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(stream.getvalue(), encoding="utf-8-sig", newline="")
 
@@ -161,12 +296,14 @@ def save_run(out: Path, rows: list[dict], errors: list[dict], areas: list[dict],
     if len({r["area_code"] for r in rows}) != len(rows):
         raise DataError("같은 실행에서 지역 코드가 중복됨")
     status = "success" if len(rows) == len(areas) and not errors else ("partial" if rows else "failed")
-    report = {"schema_version": 1, "collected_at": now.isoformat(timespec="seconds"),
+    report = {"schema_version": 2, "collected_at": now.isoformat(timespec="seconds"),
               "timezone": "Asia/Seoul", "run_mode": mode, "scheduled_time": "07:30",
               "status": status, "expected_areas": areas, "records": rows, "errors": errors,
               "source": SOURCE, "source_name": "서울특별시 서울 열린데이터광장",
               "notes": ["지역 인구 혼잡도는 지하철 객차 혼잡도나 실제 소요시간이 아닙니다.",
-                        "인구·도로·날씨의 기준 시각은 서로 다르며 수집 시각과 구분합니다."]}
+                        "인구·도로·날씨의 기준 시각은 서로 다르며 수집 시각과 구분합니다.",
+                        "주차 가능 면수 미제공을 0으로 해석하지 않습니다.",
+                        "충전기 사용가능 표기와 충전소 출입·이용 조건을 함께 확인해야 합니다."]}
     # 전부 실패한 경우 마지막 성공 데이터는 유지하고 실패 상태만 새로 공개.
     if rows:
         write_json(out / "latest.json", report)
@@ -175,8 +312,16 @@ def save_run(out: Path, rows: list[dict], errors: list[dict], areas: list[dict],
         # 같은 날 재실행은 일자별 마지막 성공 스냅샷을 대체하여 중복 누적 방지.
         write_json(out / "daily" / (day + ".json"), report)
         write_csv(out / "daily" / (day + ".csv"), rows)
+        for section, fields in [("parking", PARKING_FIELDS), ("charging_stations", STATION_FIELDS),
+                                ("chargers", CHARGER_FIELDS), ("facility_issues", ISSUE_FIELDS)]:
+            flat = [item for row in rows for item in row.get(section, [])]
+            write_csv(out / (section + ".csv"), flat, fields)
+            write_csv(out / "daily" / (day + "-" + section + ".csv"), flat, fields)
     write_json(out / "status.json", {k: v for k, v in report.items() if k != "records"})
-    index = [{"date": p.stem, "json": "daily/" + p.name, "csv": "daily/" + p.stem + ".csv"}
+    index = [{"date": p.stem, "json": "daily/" + p.name, "csv": "daily/" + p.stem + ".csv",
+              **{section + "_csv": "daily/" + p.stem + "-" + section + ".csv"
+                 for section in ["parking", "charging_stations", "chargers", "facility_issues"]
+                 if (out / "daily" / (p.stem + "-" + section + ".csv")).exists()}}
              for p in sorted((out / "daily").glob("*.json"), reverse=True)] if (out / "daily").exists() else []
     write_json(out / "archive.json", {"days": index})
     return report
@@ -214,6 +359,7 @@ def main() -> int:
             f.write("[웹에서 확인](https://geunjb-git.github.io/geunjb-git/projects/seoul-morning-brief/)\n\n")
             for row in rows:
                 f.write(f"- {row['area_name']}: {row['congestion']} / 도로 {row['traffic_status']} / 기온 {row['temperature_c']}℃\n")
+                f.write(f"  - 수집 시설: 주차장 {len(row.get('parking', []))}곳 / 충전소 {len(row.get('charging_stations', []))}곳 / 충전기 {len(row.get('chargers', []))}대 / 보류 항목 {len(row.get('facility_issues', []))}건\n")
             for error in errors:
                 f.write("- 확인 필요: " + error["area"] + " " + error["reason"] + "\n")
     return 0 if report["status"] == "success" else 1
