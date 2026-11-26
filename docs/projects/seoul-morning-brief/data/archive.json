@@ -1,6 +1,15 @@
 {
   "days": [
     {
+      "date": "2026-11-26",
+      "json": "daily/2026-11-26.json",
+      "csv": "daily/2026-11-26.csv",
+      "parking_csv": "daily/2026-11-26-parking.csv",
+      "charging_stations_csv": "daily/2026-11-26-charging_stations.csv",
+      "chargers_csv": "daily/2026-11-26-chargers.csv",
+      "facility_issues_csv": "daily/2026-11-26-facility_issues.csv"
+    },
+    {
       "date": "2026-11-25",
       "json": "daily/2026-11-25.json",
       "csv": "daily/2026-11-25.csv",

@@ -1,8 +1,8 @@
 {
   "schema_version": 2,
-  "collected_at": "2026-11-25T15:28:12+09:00",
+  "collected_at": "2026-11-26T13:16:11+09:00",
   "timezone": "Asia/Seoul",
-  "run_mode": "manual",
+  "run_mode": "scheduled",
   "scheduled_time": "07:30",
   "status": "success",
   "expected_areas": [

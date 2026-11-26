@@ -1,0 +1,4 @@
+﻿area_name,area_code,collected_at,population_time,congestion,population_min,population_max,traffic_time,traffic_status,traffic_speed_kmh,weather_time,temperature_c,humidity_pct,precipitation_type,precipitation_message,pm25,pm25_status,quality_notes
+교대역,POI018,2026-11-26T13:16:11+09:00,2026-11-26 12:45,붐빔,24000,26000,2026-11-26 13:15,서행,16,2026-11-26 13:10,12.7,60,없음,비 또는 눈 소식이 없어요.,12,좋음,
+고속터미널역,POI017,2026-11-26T13:16:11+09:00,2026-11-26 12:45,약간 붐빔,28000,30000,2026-11-26 13:15,서행,21,2026-11-26 13:10,13.8,64,없음,비 또는 눈 소식이 없어요.,12,좋음,
+양재역,POI041,2026-11-26T13:16:11+09:00,2026-11-26 12:45,약간 붐빔,20000,22000,2026-11-26 13:15,서행,20,2026-11-26 13:10,12.7,60,없음,비 또는 눈 소식이 없어요.,12,좋음,
